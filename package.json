@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "sourceMap": true
+    },
+    "devDependencies": {
+        "@types/bootstrap": "^5.0.12",
+        "@types/jquery": "^3.5.5"
+    }
+}
