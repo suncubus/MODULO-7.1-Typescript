@@ -1,0 +1,59 @@
+/*Resetea todos los estilos del navegador */
+*{
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+:root{
+    --game-font: 'Aircruiser Academy Laser', sans-serif;
+}
+
+html, body,.container-fluid {
+    height: 100vh;   
+}
+h1,h2{
+    font-family: var(--game-font); 
+}
+
+.visible{
+    display:in-line;
+}
+.no-visible{
+    display:none;
+}
+.stage-1, .stage-2{
+    height: 25rem;
+}
+.rock{
+    font-size:4rem;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    transform: rotate(-45deg);
+}
+.rock-move{    
+    animation: bounce 0.5s infinite;
+}
+.rock-up{
+   position: relative;   
+   animation: up 0.5s;
+}
+  
+/*movimiento cohete*/
+@keyframes bounce {
+    0% {
+      transform: translate3d(0px, 0px, 0) rotate(-45deg);
+      -webkit-transform: translate3d(0px, 0px, 0) rotate(-45deg);
+      -moz-transform: translate3d(0px, 0px, 0) rotate(-45deg);
+    }
+    50% {
+      transform: translate3d(0px, -4px, 0) rotate(-45deg);
+      -webkit-transform: translate3d(0px, -4px, 0) rotate(-45deg);
+      -moz-transform: translate3d(0px, -4px, 0) rotate(-45deg);
+    }
+    100% {
+      transform: translate3d(0px, 0px, 0)  rotate(-45deg);
+      -webkit-transform: translate3d(0px, 0px, 0)  rotate(-45deg);
+      -moz-transform: translate3d(0px, 0px, 0)  rotate(-45deg);
+    }
+  }

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COHETES</title>
+     <!-- Bootstrap CSS -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    
+     <!-- Fontawesome CSS -->
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+     
+     <!-- Aircruiser font -->
+     <link href="http://fonts.cdnfonts.com/css/aircruiser" rel="stylesheet">
+                
+     <!-- Custom styles -->
+     <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid bg-dark">
+            <!--TITULOS-->
+            <div class="row">
+                <div class="col-6 text-info text-center"><h1 class="mt-2">PLAYER 1</h1></div>
+                <div class="col-6 text-success text-center"><h1 class="mt-2">PLAYER 2</h1></div>
+            </div>
+            <!--CREAR COHETES-->
+            <div class="row">      
+                <form class="row needs-validation" method="" action="" name="roquetForm" id="roquetForm"> 
+                    <!--COHETE 1-->
+                    <div class="col-6">
+                        <div class="row m-2">                        
+                            <input type="text" class="form-control" id="inputRocket0Id" placeholder="Rocket name">
+                            <div class="invalid-feedback" id="invalidRocket0Id"></div>
+                        </div>  
+                        <div class="row  m-2">
+                            <select class="form-control" id="selectRocket0">
+                                <option>Propellers</option>
+                                <option>3</option>
+                                <option>6</option>
+                                <option>9</option>
+                            </select>
+                            <div class="invalid-feedback" id="inavalidRocket0select"></div>
+                        </div>                 
+                    </div>   
+                    <!--COHETE 2-->
+                    <div class="col-6">              
+                        <div class="row  m-2">
+                            <input type="text" class="form-control" id="inputRocket1Id" placeholder="Rocket name">
+                            <div class="invalid-feedback" id="invalidRocket1Id"></div>
+                        </div>  
+                        <div class="row  m-2">
+                            <select class="form-control" id="selectRocket1">
+                                <option>Propellers</option>
+                                <option>3</option>
+                                <option>6</option>
+                                <option>9</option>
+                            </select>
+                            <div class="invalid-feedback" id="inavalidRocket1select"></div>
+                        </div>                        
+                    </div> 
+                    <div class="row">
+                        <button type="button" class="btn col-3 btn-outline-light m-auto" onclick="return validateRockets()">CREATE ROCKETS</button>          
+                    </div>
+                </form>
+            </div>  
+            <!--JUEGO--> 
+            <div class="row no-visible" id="game">
+                <div class="row">
+                    <div class="col-6 ">
+                        <div class="row text-info m-1" id="info1"></div>
+                        <div class="row stage-1 bg-white border border-info rounded m-1 text-center d-flex align-items-end">
+                            <h2 id="finish0" class="no-visible">FINISH</h2>
+                            <i class="fas fa-rocket rock rock-move text-info" id="gameRocket0"></i>
+                        </div>                    
+                    </div>
+                    <div class="col-6">
+                        <div class="row text-success m-1" id="info2"></div>
+                        <div class="row stage-2 bg-white border border-success rounded  m-1 text-center d-flex align-items-end">
+                            <h2 id="finish1" class="no-visible">FINISH</h2>
+                            <i class="fas fa-rocket rock rock-move text-success" id="gameRocket1"></i>
+                        </div>                    
+                    </div>
+                </div>
+                <div class="row text-center" id="btnPlay">
+                    <button type="button" class="btn col-2 btn-outline-light m-auto" onclick="play();">PLAY</button>          
+                </div> 
+                <div class="row text-center no-visible" id="btnGame">
+                    <div class="col-6">
+                        <button id="btnAcelerate0" type="button" class="btn btn-sm btn-outline-light m-auto mt-2" onclick="goRocket(0);">ACELERATE</button>
+                        <button id="btnBrake0"type="button" class="btn btn-sm btn-outline-light m-auto mt-2" onclick="stopRocket(0);">BRAKE</button>   
+                    </div>
+                    <div class="col-6">
+                        <button id="btnAcelerate1" type="button" class="btn btn-sm btn-outline-light m-auto mt-2" onclick="goRocket(1);">ACELERATE</button>
+                        <button id="btnBrake1" type="button" class="btn btn-sm btn-outline-light m-auto mt-2" onclick="stopRocket(1);">BRAKE</button>   
+                    </div>                         
+                </div>
+            </div>  
+            <!-- Modal -->
+                <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog modal-dialog-centered">                    
+                        <div class="modal-content">
+                            <div class="modal-body" id="showWinner"></div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-dark text-center" data-dismiss="modal" onclick="resetGame()" >PLAY AGAIN</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <!--fin modal-->            
+    </div>
+    
+    <!--SCRIPTS-->
+    <script src="../models/rocket.js"></script>
+    <script src="../models/propeller.js"></script>
+    <script src="js/variables.js"></script>
+    <script src="js/validations.js"></script>
+    <script src="../controllers/controllers.js"></script>
+    <script src="../controllers/game.js"></script>    
+    
+    <!--jquery-->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <!--bootstrap-->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</body>
+</html>
